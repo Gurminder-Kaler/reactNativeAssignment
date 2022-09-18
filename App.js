@@ -24,10 +24,29 @@ const RequiredSign = () => {
 const App = () => {
   const [weight, setWeight] = useState(0.0);
   const [height, setHeight] = useState(0.0);
-  const [unit, setUnit] = useState('SI');
+  const [unit, setUnit] = useState('');
   const [output, setOutput] = useState(0.0);
+  const [unitError, setUnitError] = useState('');
+  const [weightError, setWeightError] = useState('');
+  const [heightError, setHeightError] = useState('');
 
   const computeBmi = () => {
+    console.log('UNITTT', unit);
+    if (unit == '') {
+      setUnitError('Unit is required!');
+    } else {
+      setUnitError('');
+    }
+    if (weight == '') {
+      setWeightError('Weight is required!');
+    } else {
+      setWeightError('');
+    }
+    if (height == '') {
+      setHeightError('Height is required!');
+    } else {
+      setHeightError('');
+    }
     if (unit == 'SI') {
       let wKG = weight; // weight in kgs
       let hM = height / 100; // height in meters
@@ -66,6 +85,7 @@ const App = () => {
                 {label: 'Imperial[lb, in]', value: 'Imperial'},
               ]}
             />
+            {unitError ? <Text style={styles.error}>{unitError}</Text> : ''}
           </View>
           <View style={styles.inputBox}>
             <Text style={styles.label}>
@@ -77,6 +97,7 @@ const App = () => {
               onChangeText={value => setWeight(value)}
               autoCapitalize="none"
             />
+            {weightError ? <Text style={styles.error}>{weightError}</Text> : ''}
           </View>
           <View style={styles.inputBox}>
             <Text style={styles.label}>
@@ -88,6 +109,8 @@ const App = () => {
               autoCapitalize="none"
               onChangeText={value => setHeight(value)}
             />
+
+            {heightError ? <Text style={styles.error}>{heightError}</Text> : ''}
           </View>
           <View style={styles.inputBox}>
             <TouchableOpacity onPress={computeBmi}>
@@ -99,10 +122,15 @@ const App = () => {
             <Text style={styles.output}>&nbsp;The BMI is : {output}</Text>
           </View>
           <View style={styles.inputBox}>
-          <Text style={styles.link}
-                onPress={() => Linking.openURL('https://www.whathealth.com/bmi/chart-feetkilos.html')}>
-            BMI CHART
-          </Text>
+            <Text
+              style={styles.link}
+              onPress={() =>
+                Linking.openURL(
+                  'https://www.whathealth.com/bmi/chart-feetkilos.html',
+                )
+              }>
+              BMI CHART
+            </Text>
           </View>
         </View>
       </>
@@ -122,11 +150,11 @@ const styles = StyleSheet.create({
     fontSize: 19,
   },
   link: {
-    fontSize: 25, 
+    fontSize: 25,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 16,
-    color: 'black'
+    color: 'black',
   },
   inputBox: {
     margin: 5,
