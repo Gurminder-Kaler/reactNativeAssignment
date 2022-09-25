@@ -4,7 +4,7 @@
  * Assignment 1 
  * Course - 22F -- Web Techs - Mobile Platforms (SEC. 001)
  */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -18,17 +18,16 @@ import {Formik} from 'formik';
 import * as Yup from 'yup';
 import RNPickerSelect from 'react-native-picker-select';
 
+import RequiredSign from '../utils/requiredSign';
+
 let validationSchema = Yup.object({
   weight: Yup.number().required('Weight is required.'),
   height: Yup.number().required('Height is required.'),
   unit: Yup.string().required('Unit is required.'),
 });
 
-const RequiredSign = () => {
-  return <Text style={styles.required}>*</Text>;
-};
 
-const AssignmentOne = () => {
+export const AssignmentOne = () => {
   const [result, setResult] = useState('');
   const [output, setOutput] = useState(0.0);
   const formObject = {
