@@ -15,7 +15,8 @@ import {SafeAreaView} from 'react-native';
 // import AssignmentOne from './app/screens/assignmentOne';
 // import LabOne from './app/screens/labOne';
 // import LabTwo from './app/screens/labTwo';
-import LabThree from './app/screens/labThree';
+// import LabThree from './app/screens/labThree';
+import LabFour from './app/screens/labFour';
 
 // enableScreens(true);
 
@@ -28,7 +29,8 @@ const App = () => {
       {/* <AssignmentOne/> */}
       {/* <LabOne/> */}
       {/* <LabTwo/> */}
-      <LabThree/>
+      {/* <LabThree/> */}
+      <LabFour/>
       </>
     </SafeAreaView>
   );
