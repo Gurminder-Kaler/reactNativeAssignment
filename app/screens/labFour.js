@@ -1,10 +1,6 @@
 import {
-  SafeAreaView,
   StyleSheet,
-  TextInput,
-  TouchableOpacity,
   Text,
-  Linking,
   View,
 } from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
